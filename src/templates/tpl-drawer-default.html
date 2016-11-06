@@ -1,0 +1,115 @@
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../shared-styles.html">
+
+
+<dom-module id="tpl-drawer-default">
+<template>
+<style include="shared-styles">
+  app-header {
+    color: var(--govi-text-secondary-color);
+    background-color: var(--govi-primary-color);
+  }
+  app-header paper-icon-button {
+    --paper-icon-button-ink-color: white;
+  }
+
+  .drawer-list {
+    margin: 0 20px;
+  }
+
+  .drawer-list a {
+    display: block;
+
+    padding: 0 16px;
+
+    text-decoration: none;
+
+    color: var(--govi-secondary-color);
+
+    line-height: 40px;
+  }
+
+  .drawer-list a.iron-selected {
+    color: black;
+
+    font-weight: bold;
+  }
+  .limit-height {
+    height: 48px;
+    width: 48px;
+  }
+</style>
+    <app-drawer-layout force-narrow fullbleed style="background-color: #FFF;">
+      <!-- Drawer content -->
+      <app-drawer>
+        <!-- <div style="height: 100%; overflow: auto;"></div> -->
+        <app-toolbar>Menu</app-toolbar>
+        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+          <a name="home" href="#/home">Projeto</a>
+          <a name="blog" href="#/blog">Novidades</a>
+          <a name="casts" href="#/casts">goviCasts</a>
+          <a name="team" href="#/team">Time</a>
+        </iron-selector>
+      </app-drawer>
+
+      <!-- Main content -->
+      <app-header-layout has-scrolling-region>
+        <app-header condenses reveals effects="waterfall" class="boxShadow">
+          <app-toolbar>
+            <paper-icon-button icon="menu" class="sandwich" drawer-toggle></paper-icon-button>
+            <div main-title on-tap="goto"><a name="home" href="#/home"><template is="dom-if" if="{{!has_avatar}}"><img src="../../assets/images/logo-govi.png" height="48px"></template><template is="dom-if" if="{{has_avatar}}"><img src="../../assets/images/logo-govi-plus.png" height="48px"><img src="{{avatar}}" class="circle limit-height"></template></a></div>
+              <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation" class="main-list">
+                <a name="home" href="#/home">Projeto</a>
+                <a name="blog" href="#/blog">Novidades</a>
+                <a name="team" href="#/team">Time</a>
+                <a name="casts" href="#/casts">goviCasts</a>
+                <template is="dom-if" if="{{has_avatar}}">
+                    <a name="casts" href="#/your/blog">Blog Editor</a>
+                </template>    
+             </iron-selector>
+            <paper-icon-button icon="search"></paper-icon-button>  
+          </app-toolbar>
+        </app-header>
+        <div>
+            <content select=".main-content-for-drawer-layout"></content>
+        </div>
+      </app-header-layout>
+    </app-drawer-layout>
+</template>
+<script>
+Polymer({
+    is: 'tpl-drawer-default',
+    properties: {
+        has_avatar: {
+            type: Boolean,
+            value: false
+        },
+        avatar: {
+            type: String,
+            observer: "_avatarChanged"
+        }
+    },
+    ready: function() {
+        // check or listen user data
+        var self = this;
+        var u = app.user;
+        this.avatar = u ? u.photoURL : '';
+        document.addEventListener('user-updated', function(e){
+            self.displayName = e.detail.mockDisplayName;
+            self.avatar = e.detail.photoURL;
+        });        
+    },
+    _avatarChanged: function() {
+        if (this.avatar) {
+            this.has_avatar = true;    
+        } else {
+            this.has_avatar = false;
+        }
+        
+    }
+});    
+</script>
+</dom-module>   

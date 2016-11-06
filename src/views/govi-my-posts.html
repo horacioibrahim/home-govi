@@ -1,0 +1,99 @@
+<link rel="import" href="../templates/tpl-drawer-default.html">
+<link rel="import" href="../shared-styles.html">
+<dom-module id="govi-my-posts">
+<template>
+<style>
+    :host {
+        
+    }
+    .blog-my {
+        margin-top: 30px;
+    }
+    h5 {
+        margin-bottom: 30px;
+    }
+    .hint {
+        color:rgba(0,0,0,0.54);
+    }
+</style>    
+    <tpl-drawer-default>
+        <div class="main-content-for-drawer-layout">
+            <div class="container blog-my">
+                <div class="row">
+                    <div class="col s12">
+                        <h5>Você é autor dessas estórias</h5>
+                        <template is="dom-repeat" items="{{posts}}">
+                          <div class="card white">
+                                <div class="card-content grey-text text-darken-4">
+                                  <span class="card-title "><strong>{{getTitle(item.body)}}</strong></span>
+                                  <div class="hint">{{dateFormat(item.dtCreated)}}</div>
+                                  <p class="grey-text text-darken-4">{{getIntro(item.body)}}</p>
+                                </div>
+                                <div class="card-action">
+                                  <a href="#/edit/{{item.key}}">Editar</a>
+                                </div>
+                              </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>s
+    </tpl-drawer-default>
+</template>
+<script>
+Polymer({
+    is: "govi-my-posts",
+    properties: {
+        posts: {
+            type: Array,
+            value: function(){
+                var arr = new Array();
+                return arr;
+            }
+        },
+        user: Object
+    },
+    ready: function() {
+        var self = this;
+        // check or listen user data
+        var u = app.user;
+        this.user = u
+        document.addEventListener('user-updated', function(e){
+            self.user = e.detail;
+            self._getPosts();
+        });
+        if (this.user) {
+            this._getPosts();    
+        }
+    },
+    _getPosts: function(){
+        var self = this;
+        var blogRef = app.db.ref('blog');
+        var blogMyPosts = blogRef.orderByChild('uid').equalTo(self.user.uid).on('child_added', 
+            function(res){
+               var model = res.val();
+               model.key = res.key;
+               self.posts.unshift(model);
+               self.posts = self.posts.slice();
+            }, 
+            function(err){
+                console.log(err);
+        });
+    },
+    /** `getTitle` parse first line to find h.title 
+    *
+    * @param {string} text will be parsed.
+    * @returns {string} with title.
+    */    
+    getTitle: function(text) {
+        return app.getTitle(text);
+    },
+    getIntro: function(text) {
+        return app.getIntro(text);
+    },
+    dateFormat: function(dtcreated) {
+        return dtcreated ? app.getDateFromTimestamp(dtcreated) : "";
+    }
+});
+</script>
+</dom-module>

@@ -1,0 +1,11 @@
+.brackets.json
+.firebaserc
+.gitattributes
+.DS_Store
+bower_components/
+src/bower_components/
+build/
+node_modules/
+dist/
+.github/
+

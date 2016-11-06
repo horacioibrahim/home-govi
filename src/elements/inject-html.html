@@ -1,0 +1,24 @@
+<link rel="import" href="../shared-styles.html">
+<dom-module id="inject-html">
+<template>
+    <style>
+        :host {
+            
+        }
+    </style>
+</template>
+<script>
+Polymer({
+    is: "inject-html",
+    properties: {
+        html: {
+            type: String,
+            observer: "_htmlChanged"
+        }        
+    },
+    _htmlChanged: function() {
+        this.innerHTML = this.html;
+    }
+});
+</script>
+</dom-module>

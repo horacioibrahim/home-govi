@@ -1,0 +1,434 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/material/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(fonts/material/MaterialIcons-Regular.woff2) format('woff2'),
+       url(fonts/material/MaterialIcons-Regular.woff) format('woff'),
+       url(fonts/material/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+
+.brand-logo img {
+    margin-top: 6px;
+}
+
+.color-1 {
+    color: #d32f2f;
+}
+.bg-color-1 {
+    background-color: #d32f2f;
+}
+
+.section h4 {
+    margin-top: 60px;
+}
+.subheader, .section.section-2.subheader {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: rgba(0,0,0,0.54);
+    margin-bottom: 34px;
+}
+
+/* helpers */
+.text-align-left {
+    text-align: left
+}
+.border-top-1px {
+    border-top: 1px solid #e0e0e0;
+}
+h4.black-weight {
+    font-weight: bold !important;
+}
+.hints-color {
+    color: rgba(0,0,0,0.54);
+}
+.relative {
+    position: relative;
+}
+.text-background-white {
+    background-color: rgba(255,255,255,0.54);
+}
+.text-background-black {
+    background-color: rgba(0,0,0,0.54);
+}
+.text-italic {
+    font-style: italic;
+}
+/* flow-text for editable */
+.editor-box p, .editor-box blockquote {
+    margin-top: 10px;
+    margin-bottom: 14px;
+    font-family: Georgia,Cambria,"Times New Roman",Times, serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: -.003em;  
+    color: rgba(0,0,0,0.80);
+}   
+.editor-box blockquote {
+    border-left: 5px solid #000;
+}       
+.editor-box h2 {
+    font-size: 2.56rem;
+    font-weight: 700;
+}
+.editor-box h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.56rem;
+    font-weight: 700;
+}
+   
+@media only screen and (min-width: 360px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.2rem;
+    }
+}
+@media only screen and (min-width: 390px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.224rem;
+    }
+} 
+@media only screen and (min-width: 420px) {
+    .editor-box p , .editor-box blockquote{
+        font-size: 1.248rem;
+    }
+} 
+@media only screen and (min-width: 450px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.272rem;
+    }
+}
+@media only screen and (min-width: 480px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.296rem;
+    }
+}
+@media only screen and (min-width: 510px) {
+    .editor-box p {
+        font-size: 1.32rem;
+    }
+}
+@media only screen and (min-width: 540px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.344rem;
+    }
+}
+@media only screen and (min-width: 570px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.368rem;
+    }
+}
+@media only screen and (min-width: 600px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.392rem;
+    }
+}
+
+@media only screen and (min-width: 630px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.416rem;
+    }
+}
+@media only screen and (min-width: 660px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.44rem;
+    }
+}
+@media only screen and (min-width: 690px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.464rem;
+    }
+}
+@media only screen and (min-width: 720px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.488rem;
+    }
+}
+@media only screen and (min-width: 750px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.512rem;
+    }
+}
+@media only screen and (min-width: 780px) {
+    .editor-box p {
+        font-size: 1.536rem;
+    }
+}
+@media only screen and (min-width: 810px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.56rem;
+    }
+}
+@media only screen and (min-width: 840px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.584rem;
+    }
+}
+@media only screen and (min-width: 870px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.608rem;
+    } 
+}
+@media only screen and (min-width: 900px) {
+    .editor-box p, .editor-box blockquote {
+        font-size: 1.632rem;
+    }    
+}
+
+/****** *******************
+****** FORM STYLING *******
+**************************/
+ /* label color */
+.input-field label {
+ color: rgba(0,0,0,0.54);;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label,
+.input-field input[type=password]:focus + label,
+.input-field input[type=email]:focus + label{
+ color: #0d47a1;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus,
+.input-field input[type=password]:focus,
+.input-field input[type=email]:focus {
+ border-bottom: 1px solid #0d47a1;
+ box-shadow: 0 1px 0 0 #000;
+}
+/* valid color */
+.input-field input[type=text].valid,
+.input-field input[type=password].valid,
+.input-field input[type=email].valid{
+ border-bottom: 1px solid #0d47a1;
+ box-shadow: 0 1px 0 0 #000;
+}
+/* invalid color */
+.input-field input[type=text].invalid,
+.input-field input[type=password].invalid,
+.input-field input[type=email].invalid {
+ border-bottom: 1px solid #ff6f00;
+ box-shadow: 0 1px 0 0 #000;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+ color: #000;
+}
+/* http://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+.section.no-pad-bot {
+    background-image: url(../images/bg-header.png);
+    background-repeat: repeat-x repeat-y;
+    min-height: 400px;
+}
+.section.no-pad-bot .header {
+    color: white;
+    margin: 4.1rem 0 1.68rem 0;
+}
+
+.section.no-pad-bot #download-button.margin-left-10 {
+    margin-left: 10px;
+}
+.section.section-2 {
+    height: 460px;
+}
+.section.section-3 {
+    min-height: 460px;
+}
+.section.section-3 {
+    margin-top: 50px;
+}
+
+.section.section-2 h4 {
+    font-weight: bold !important;
+} 
+.devices-call {
+    background-position: right -89px bottom;
+    background-image: url(../images/devices_flat.png);
+    background-repeat: no-repeat;
+    height: 690px;
+}
+
+/* vertical based on ggmail */
+.login-right {
+    padding-left: 1.5rem !important;
+}
+.vertical-or {
+    position: absolute;
+    top: calc(50% - 23px);
+    left: -11px;
+    background: #ffffff;
+    padding: 10px 0px;
+    color: #9e9e9e;
+}
+.or-divider {
+    border-top: 1px solid #e0e0e0;
+    color: #9e9e9e;
+    text-align: center;
+    margin: 2rem 0rem;
+}
+.or-divider > span {
+    position: relative;
+    top: -10px;
+    background: #ffffff;
+    padding: 0px 10px;
+}
+.connect-btn {
+    height: auto;
+    min-width: 140px;
+    padding: 0px;
+    margin: 4px 0px;
+    width: 80%;
+}
+.btns {
+    min-width: 200px;
+}
+.button-twitter {
+    color: white;
+}
+.button-twitter img {
+    position: relative;
+    top: 6px;
+    right: 5px;
+}
+.button-twitter:hover {
+
+}
+.button-facebook {
+    color: white;
+    background: #3b5998;
+}
+.button-facebook:hover {
+    background: #4072b6;
+}
+.button-google {
+    color: white;
+    background: #dd4b39;
+}
+.button-google:hover {
+    background: #f44d3c;
+}
+/***** FOOTER *******/
+.message-table {
+    display: table;
+}
+.message-table .message-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+.love {
+    margin-top: 6px;
+}
+.message-table.favorite, .message-cell.favorite {
+    padding-top: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.topback {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+}
+.topback.active {
+    display: block;
+}
+.topback > a {
+    position: inherit;
+    bottom: 0;
+    margin: 0 10px 10px 2px;
+}
+
+/* Class for when element is above threshold */
+.pin-top {
+    position: relative;
+}
+
+/* Class for when element is below threshold */
+.pin-bottom {
+    position: relative;
+}
+
+/* Class for when element is pinned */
+.pinned {
+    position: fixed !important;
+    left: 0;
+    bottom: 0 !important;
+    padding: 10px !important;    
+}
+
+
+@media (min-width: 601px) {
+    .hide-on-med-and-up {
+        display: none !important;
+    }
+    .login-right {
+        border-left: 1px solid #d4d4d4;
+        position: relative;        
+    }
+    .connect-btn {
+        height: auto;
+        min-width: 140px;
+        padding: 10px 40px;
+        margin: 10px 10px;
+    }
+}
+@media (max-width: 700px) {
+    .section.no-pad-bot .header {
+        font-size: 1.68rem;
+    }
+    .brand-logo img {
+        width: 100px;
+        margin-top: 12px;
+    }
+    .devices-call {
+        background-size: contain;
+    }
+}
+

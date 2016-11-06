@@ -1,0 +1,11 @@
+{
+  "rules": {
+      "blog": {
+        ".indexOn": ["uid", "slug"],
+        ".read": "true",
+        "$key": {
+          ".write": "newData.child('uid').val() == auth.uid  || data.child('uid').val() == auth.uid"
+        }
+      }
+  }
+}

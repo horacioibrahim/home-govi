@@ -1,0 +1,196 @@
+<link rel="import" href="../templates/tpl-drawer-default.html">
+<link rel="import" href="../shared-styles.html">
+
+<dom-module id="govi-edit">
+<template>
+<style include="shared-styles">
+    :host {
+
+    }
+    .main-content-for-drawer-layout {
+        background: red;
+    }
+    h4, h5, h6 {
+        font-weight: 900;
+    }    
+    .blog-section {
+        padding-top: 40px;
+        padding-bottom: 40px; 
+        min-height: 800px;
+    }
+    .editor-box h2 {
+        /* styling in style.css external file */
+    }
+    .input-field input[type=text]:focus, 
+    .input-field input[type=password]:focus, 
+    .input-field input[type=email]:focus {
+        border-bottom: 1px solid #0d47a1;
+        box-shadow: 0 1px 0 0 #000;
+    }   
+    .subheader {
+        margin-bottom: 0;
+    }
+
+</style>
+    
+<tpl-drawer-default>
+    <div class="main-content-for-drawer-layout">
+        <div class="blog-section" style="background-color: {{bgcolor}}; color: {{fontcolor}};">
+            <div class="container">
+                <div class="row">
+                    <!--
+                    <div class="col s3 m2 center-align">
+                         <img src="{{avatar}}" class="circle"> 
+                    </div> 
+                    -->
+                    <div class="col s9 m10">
+                        <div class="author">
+                            <div class="avatar"><h5>{{displayName}}</h5></div>
+                            <div class="description">Faça a diferença. Compartilhe uma estória!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 subheader">Preencha os campos slug e hashtag abaixo para salvar automaticamente.</div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m6 input-field">
+                        <input id="slug" name="slug" type="text" on-blur="_slugGenerator">
+                         <label for="slug">slug ex.: my-post-with-subject-for-great-seo</label>
+                    </div>
+                    <div class="col s12 m4 input-field">
+                        <input id="hashtag" name="hashtag" type="text">
+                         <label for="hashtag">hashtag ex.: goviCasts xor goviLabs</label>
+                    </div>   
+                    <div class="col s12 m2 input-field">
+                        <input id="published" name="published" type="checkbox">
+                         <label for="published">Publicado</label>
+                    </div>                      
+                </div>                
+                <div class="row">
+                    <div class="col s12 editor-box">
+                        <div id="blogEditor">  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</tpl-drawer-default>
+    
+</template>
+<script>
+Polymer({
+    is: 'govi-edit', 
+    properties: {
+        /* setup style */
+        bgcolor: {
+            type: String,
+            value: "#FFF"
+        },
+        fontcolor: {
+            type: String,
+            value: "rgba(0,0,0,0.86)"
+        },
+        displayName: String,
+        avatar: String,
+        /** `key` querystring from url */
+        key: {
+            type: String,
+            observer: "_keyChanged"
+        },
+        /** `editor` instance of the MediumEditor */
+        editor: Object,
+        /** `blogPostRef` firebase reference */
+        blogPostRef: Object
+    },
+    ready: function(){
+          var self = this;
+          // new post when this page is loaded
+          var blogRef = firebase.database().ref('blog');
+          self.blogPostRef = blogRef.push();
+        
+          var edit = this.$.blogEditor;
+          this.editor = new MediumEditor(edit, {
+              buttonLabels: true
+          });
+          this.editor.subscribe('editableInput', function(event, editable) {
+                // Do some work with debounce
+                self.debounce('update-post', function(){
+                    var s = self.editor.serialize();
+                    var value = s.blogEditor.value;
+                    // push into firebase
+                    if (!self.slug || !self.hashtag || self.slug != '' || self.hashtag != '') {
+                        var uid = app.user.uid;
+                        var author, body, hashtag, published, slug, dtCreated;
+                        author = self.displayName;
+                        body = value;
+                        hashtag = self.$.hashtag.value ? self.$.hashtag.value : 'blog';
+                        published = self.$.published.value;
+                        slug = self.$.slug.value;
+                        var data = {
+                            'author': author,
+                            'body': body,
+                            'hashtag': hashtag,
+                            'published': published,
+                            'slug': slug,
+                            'uid': uid,
+                            'dtCreated': firebase.database.ServerValue.TIMESTAMP
+                        };
+                        self.blogPostRef.set(data);
+                    } else {
+                        console.log("metadados pendentes...");
+                    }
+                }, 400);
+          });  
+        // check or listen user data
+        var u = app.user;
+        this.displayName = u ? u.mockDisplayName : '';
+        this.avatar = u ? u.photoURL : '';
+        document.addEventListener('user-updated', function(e){
+            self.displayName = e.detail.mockDisplayName;
+            self.avatar = e.detail.photoURL;
+        });
+    },
+    _slugGenerator: function(){
+      this.$.slug.value = this._string_to_slug(this.$.slug.value);
+    },
+    _string_to_slug: function (str) {
+      // code copied from http://dense13.com/blog/2009/05/03/converting-string-to-slug-javascript/
+      // work fine ;)
+      str = str.replace(/^\s+|\s+$/g, ''); // trim
+      str = str.toLowerCase();
+
+      // remove accents, swap ñ for n, etc
+      var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+      var to   = "aaaaeeeeiiiioooouuuunc------";
+      for (var i=0, l=from.length ; i<l ; i++) {
+        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+      }
+
+      str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+        .replace(/-+/g, '-'); // collapse dashes
+
+      return str;
+    },
+    _keyChanged: function() {
+        var self = this;
+        self.blogPostRef = app.db.ref('blog/' + this.key);   
+        self.blogPostRef.once('value', 
+                function(res){
+                    // update fields ...
+                    var model = res.val();
+                    model.key = res.key;
+                    self.$.hashtag.value = model.hashtag;
+                    self.$.slug.value = model.slug;
+                    self.editor.setContent(model.body,0);
+                }, 
+                function(err){
+                    console.log(err)
+                }
+        );
+    }
+});
+</script>
+</dom-module>

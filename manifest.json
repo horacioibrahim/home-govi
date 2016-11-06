@@ -1,0 +1,20 @@
+{
+  "name": "Govi Project",
+  "short_name": "Govi",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#fafafa",
+  "background_color": "#fafafa",
+  "icons": [
+    {
+      "src": "images/manifest/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/manifest/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

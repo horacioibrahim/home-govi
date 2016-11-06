@@ -1,0 +1,258 @@
+<link rel="import" href="../templates/tpl-drawer-default.html">
+<link rel="import" href="../elements/inject-html.html">
+<link rel="import" href="../shared-styles.html">
+
+<dom-module id="govi-blog">
+<template>
+<style include="shared-styles">
+    :host {
+       
+    }
+    h4, h5, h6 {
+        font-weight: 900;
+    }    
+    .blog-section {
+        padding-top: 40px;
+        padding-bottom: 40px;        
+    }
+    .blog-header {
+        min-height: 220px;
+    }
+    .blog-header img {
+        width: 100%;
+        max-width: 180px;
+    }
+    .article h5 {
+        font-weight: 500;
+    }
+    .article p {
+        font-size: 18px;
+    }
+    .blog-latests, .lastets-30-posts {
+        background-color: #FFF;
+    }
+    .blog-latests .post-body .flow-text {
+        line-height: 32px;
+        color: rgba(0,0,0,0.70);
+    }
+    .post-created {
+        color: rgba(0,0,0,0.54);
+    }
+    .bgcolor-1 {
+        background-color: #0072bb;
+    }
+    .fontcolor-1 {
+        color: #FFF;
+    }
+    .bgcolor-2 {
+        background-color: #01579B;   
+    }
+    .fontcolor-2 {
+        color: #FFF;
+    }
+    .bgcolor-3 {
+        background-color: #212121;
+    }
+    .fontcolor-3 {
+        color: #FFF;
+    }    
+    @media (max-width: 767px) {
+        .blog-section {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .blog-latests .post-body .flow-text {
+            line-height: 24px;
+        }        
+    }
+</style>
+    
+<tpl-drawer-default>
+    <div class="main-content-for-drawer-layout">
+        <div class$="{{_computedClass(hashtag)}}">
+            <div class="container">
+                <div class="row">
+                    <div class="col s3">
+                        <img src="{{logo}}">
+                    </div>
+                    <div class="col s9">
+                        <h4>{{hashtag}}</h4>
+                        <p class="flow-text">{{description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <template is="dom-if" if="{{!has_slug}}">
+            <div id="latests30" class="lastets-30-posts blog-section">
+                <div class="container">
+                    <div class="row">
+                        <!-- template-repeat -->
+                        <div class="col s12">
+                            <template is="dom-repeat" items="{{posts}}">
+                            <div class="article">
+                                <h5><a href="/#/blog/s/{{item.slug}}" class="bb">{{_title(item.body)}}</a></h5>
+                                <p>{{_intro(item.body)}}</p>
+                            </div>
+                            </template>                               
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template is="dom-if" if="{{has_slug}}">
+            <div id="latests" class="blog-latests posts blog-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 post-metadata">
+                            <div class="row">
+                                <div class="col s8 post-author"><a href="/#/team/horacioibrahim">{{post.author}}</a> <span class="post-created">, {{post.dtCreated}}</span></div>
+                            </div>
+                        </div>                         
+                        <!--<div class="col s12 post-title">
+                            <h4>{{_title(post.body)}}</h4>
+                        </div>                  
+                        -->
+                    </div>                
+                    <div class="row">
+                        <div class="col s12 post-body">
+                            <inject-html html="{{post.body}}"></inject-html>
+                        </div>                
+                    </div>                
+                </div>
+            </div>
+        </template>
+    </div>
+</tpl-drawer-default>
+    
+</template>
+<script>
+Polymer({
+    is: 'govi-blog', 
+    properties: {
+        /* setup style */
+        bgcolor: {
+            type: String,
+            value: "#0072bb"
+        },
+        fontcolor: {
+            type: String,
+            value: "#FFF"
+        },
+        slug: {
+            type: String,
+            observer: "_slugChanged"
+        },
+        /** `has_blogid` used for test if blogid has value
+        * or is empty.
+        */
+        has_slug: {
+            type: Boolean,
+            value: false
+        },
+        hashtag: {
+            type: String,
+            value: "Blog",
+            observer: "_hashtagChanged"
+        },
+        description: {
+            type: String,
+            value: "As últimas novidades do Projeto Govi e comunidade."
+        },
+        logo: {
+            type: String,
+            value: "/assets/images/blog-logo-default.png"
+        },
+        posts: {
+            type: Array,
+            value: function(){
+                var arr = new Array();
+                return arr;
+            }
+        },
+        post: Object
+    },
+    ready: function(){
+        this._getPosts();  
+    },
+    _getPosts: function() {
+        var self = this;
+        this.bRef = firebase.database().ref('blog/');
+        this.bRef.on('child_added', function(res){
+            self.posts.unshift(res.val());
+            self.posts = self.posts.slice();
+        }, function(err){
+            console.log(err);
+        });
+    },
+    _getPost: function(slugText) {
+        var self = this;
+        this.bRef.off();
+        this.bRef = firebase.database().ref('blog/').orderByChild('slug').equalTo(slugText);
+        this.bRef.once('value', function(res){
+                    var model = res.val();
+                    var items = Object.keys(model);
+                    var item = model[items[0]];
+                    console.log(item);
+                    self.post = item;
+                    
+                }, 
+                function(err){
+                    console.log(err)
+                }
+        );
+    },
+    _slugChanged: function() {
+        if (this.slug) {
+            this.has_slug = true;
+            // get post based slug
+            console.log("get based on slug from firebase: " + this.slug);
+            this._getPost(this.slug)
+            return;
+        } 
+        this.has_slug = false;
+        return;
+    },
+    _computedClass: function(hashtag) {
+      console.log("passs: " + hashtag);
+       var c = "blog-header blog-section ";
+        if (this.hashtag == "Blog" || this.hashtag == "blog" || !this.hashtag) {
+            this.hashtag = "Blog";
+        }
+        // knows hashtags
+        if (this.hashtag == "goviCasts" || this.hashtag == "#goviCasts") {
+            // TODO: make something....
+        } 
+        if (this.hashtag == "goviLabs" || this.hashtag == "#goviLabs") {
+            this.logo = "/assets/images/goviLabs_white.png";
+            c += "bgcolor-2 fontcolor-2";
+            return c;
+        }  
+        if (this.hashtag == "goviLives" || this.hashtag == "#goviLives") {
+            // TODO: make something....
+        } 
+        if (this.hashtag == "goviElements" || this.hashtag == "#goviElements") {
+            this.logo = "/assets/images/goviElements_white_200.png";
+            c += "bgcolor-3 fontcolor-3";
+            return c;
+        }
+       // logo and class defaut
+       this.logo = "/assets/images/blog-logo-default.png";
+       c += "bgcolor-1 fontcolor-1";        
+       return c;
+    },
+    _hashtagChanged: function(){
+        // Get the 30th latests posts based on  hashtag.       
+    },
+    _title: function(text) {
+        console.log(app.getTitle(text));
+        return app.getTitle(text);
+    },
+    _intro: function(text) {
+        return app.getIntro(text);
+    },
+    _injectHTML: function(model) {
+
+    }
+});
+</script>
+</dom-module>

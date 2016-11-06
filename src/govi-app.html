@@ -1,0 +1,136 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="bower_components/app-layout/app-toolbar/app-toolbar.html">
+<!-- 
+<link rel="import" href="bower_components/app-route/app-location.html">
+<link rel="import" href="bower_components/app-route/app-route.html">
+-->
+<link rel="import" href="bower_components/app-router/app-router.html">
+<link rel="import" href="bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="elements/my-icons.html">
+
+<dom-module id="govi-app">
+  <template>
+    <style>
+      :host {
+        --govi-primary-color: #fafafa;
+        --govi-secondary-color: black;
+        --govi-text-primary-color: rgba(0,0,0,0.86);
+        --govi-text-secondary-color: rgba(0,0,0,0.54);  
+        --govi-text-hint-color: rgba(0,0,0,0.38);    
+        display: block;
+      }
+    </style>
+
+    <!-- 
+     <app-location route="{{route}}" use-hash-as-path></app-location>
+    
+    <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+      
+    <app-route 
+        route="{{subroute}}"
+        pattern="/:subpage/:value"
+        data="{{subrouteData}}">
+    </app-route>    
+             
+    -->
+    <app-router>
+        <app-route path="/" import="/src/views/govi-home.html"></app-route>
+        <app-route path="/home" import="/src/views/govi-home.html"></app-route>
+        <!-- blog urls -->
+        <app-route path="/blog" import="/src/views/govi-blog.html"></app-route>
+        <app-route path="/blog/h/:hashtag" import="/src/views/govi-blog.html"></app-route>
+        <app-route path="/blog/s/:slug" import="/src/views/govi-blog.html"></app-route>
+        <!-- route for admins -->
+        <app-route path="/edit" import="/src/views/govi-edit.html"></app-route>
+        <app-route path="/edit/:key" import="/src/views/govi-edit.html"></app-route>
+        <app-route path="/your/blog" import="/src/views/govi-my-posts.html"></app-route>
+    </app-router>
+      
+    <iron-pages
+        selected="[[page]]"
+        attr-for-selected="name"
+        fallback-selection="404"
+        role="main">
+      <govi-home name="home"></govi-home>
+      <govi-blog name="blog"></govi-blog>
+      <govi-casts name="casts"></govi-casts>
+      <govi-team name="team"></govi-team>
+      <govi-edit name="edit"></govi-edit>
+      <govi-404 name="404"></govi-404>
+    </iron-pages>
+      
+  </template>
+
+  <script>
+    Polymer({
+      is: 'govi-app',
+
+      properties: {
+        page: {
+          type: String,
+          reflectToAttribute: true
+        }
+      },
+      observers: [
+        '_routePageChanged(routeData)',
+        '_routeSubChanged(subrouteData)'  
+      ],
+      /*************** DEPRECATED ***************
+      *
+      ** `_routeSubChanged` called when subroute is matched
+      * with app-route.
+      *
+      * @param {object} o : Object {subpage: "h", value: "hashtag"}
+      
+      _routeSubChanged: function(o){
+         var gblog = this.querySelector('govi-blog');
+         if (o && o.subpage == "h") {
+            gblog.hashtag = o.value; 
+            return;
+         }
+         if (o && o.subpage == "s") {
+            gblog.slug = o.value;    
+            return;
+         }          
+      },
+      _routePageChanged: function(page) {
+          var gblog = this.querySelector('govi-blog');
+          gblog.slug = null;
+          gblog.hashtag = null;
+          this.page = page.page || 'home';
+          this._pageChanged(this.page);
+      },
+      _pageChanged: function(page) {
+        // Load page import on demand. Show 404 page if fails        
+        var resolvedPageUrl = this.resolveUrl('views/govi-' + page + '.html');
+        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+      },
+
+      _showPage404: function() {
+        this.page = '404';
+      }
+      */
+    });
+  </script>
+</dom-module>

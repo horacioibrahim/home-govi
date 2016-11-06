@@ -1,0 +1,137 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<!-- shared styles for all views -->
+<dom-module id="shared-styles">
+  <template>
+    <style>       
+      .card {
+        margin: 24px;
+        padding: 16px;
+
+        color: #757575;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      }
+
+      .circle {
+        display: inline-block;
+
+        width: 64px;
+        height: 64px;
+
+        text-align: center;
+
+        color: #555;
+        border-radius: 50%;
+        background: #ddd;
+
+        font-size: 30px;
+        line-height: 64px;
+      }
+
+      h1 {
+       
+      }
+      h2 {
+        
+      }
+      h3 {
+      }
+      a.bb {
+        transition: all 0.5s ease;
+       }
+      a.bb:hover {
+        border-bottom: 1px rgb(33, 150, 243) dotted;
+      }        
+      .sandwich {
+        display: none;      
+      }
+      div[main-title] {
+         padding-top: 4px;
+      }
+      .boxShadow {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);            
+      }     
+      iron-selector a {
+        display: inline-block;
+        color: var(--govi-text-secondary-color);
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: normal;
+        text-decoration: none;
+        margin: 0 16px; 
+        box-sizing: border-box;
+      }
+      /******** Helpers ****************/
+      .text-italic {
+        font-style: italic;
+      }
+      .text-italic strong.hint {
+            color: rgba(0,0,0,0.54);
+       }
+      .subsection-header {
+        font-size: 19px;
+        color: var(--govi-text-secondary-color);
+        font-weight: 600;
+      }
+      p {
+        line-height: 24px;
+        font-weight: 300;
+        -webkit-font-smoothing: antialiased;
+      }
+      p.govi-default {
+        font-size: 16px;      
+      }
+      .line-horizontal {
+        border-bottom: 1px solid rgba(0,0,0,0.12);
+        margin-top: 21px;
+        margin-bottom: 21px;
+      }
+      /******** Simple Grid ****************/
+      .my-table {
+          display: table;
+          width: 100%;
+      }
+      .my-cell {
+          display: table-cell;
+          vertical-align: middle;
+      } 
+      .my-cell.vtop {
+          vertical-align: top;
+      }
+      .my-cell.vbottom {
+          vertical-align: bottom;
+      }  
+      .govi-flow-text {
+        font-weight: 300;
+        line-height: 32px;
+        font-size: 21px;
+      }
+      .subheader {
+        font-size: 1.3rem;
+        font-weight: 300;
+        color: rgba(0,0,0,0.54);
+        margin-bottom: 34px;            
+      }
+      @media screen and (max-width: 700px) {
+          .sandwich {
+              display: inline-block;
+          } 
+          iron-selector.main-list {
+              display: none;
+          }
+      }
+    </style>
+  </template>
+</dom-module>

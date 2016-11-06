@@ -1,0 +1,435 @@
+<link rel="import" href="../templates/tpl-drawer-default.html">
+<link rel="import" href="../shared-styles.html">
+
+<dom-module id="govi-home">
+<template>
+<style include="shared-styles">
+    :host {
+       
+    }
+    h4, h5, h6 {
+        font-weight: 900;
+    }  
+    p {
+        font-size: 16px;
+    }
+    .home-content-hero {
+       height: 500px;
+       background-color: #fafafa; 
+    }
+    .home-content-hero .hero {
+    }
+    .home-content-hero .logo img {
+        width: 100%;
+        max-width: 275px;
+    }
+    .home-content-values {
+        padding-top: 80px;
+        background-color: white;
+        padding-bottom: 50px;
+    }
+    
+    .home-content-values p.subheader {
+        text-align: center;
+    }
+    .home-content-values p {
+        margin-top: 0;
+    }
+    .home-content-values .aspirational-msg {
+        margin-top: 40px;
+    }
+    .home-content-news {
+        background-color: white;
+        padding-bottom: 80px;
+    }
+    .home-content-news .posts-image {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #fdcb08;
+    }
+    .home-content-team {
+        color: white;
+        background-color: #00ade5;
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    .home-content-team .team-members {
+        text-align: center;
+    }
+    .home-content-register {
+        background-color: white;
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    footer {
+        box-sizing: border-box;
+        position: relative;
+        min-height: 320px;
+        background-color: #e6e6e6;
+    }
+    footer .details {
+        background-color: #fafafa;
+        min-height: 260px;
+        padding-bottom: 20px;
+    }
+    footer .copyleft {
+        height: 60px;
+    }
+    footer .mtop {
+        padding-top: 40px;
+    }
+    footer .details a {
+        color: rgba(0,0,0,0.54);
+        transition: color 0.5s ease;
+    }
+    footer .details a:hover {
+        color: #00ade5;
+        border-bottom: 1px rgb(33, 150, 243) dotted;
+    }
+    footer .details .links-footer ul li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+    footer .details {
+    }
+</style>
+    
+<tpl-drawer-default>
+    <div class="main-content-for-drawer-layout">
+        <section class="home-content-hero">
+            <div class="container" style="height: 100%;">
+                <div class="row"  style="height: 100%; padding-top: 120px;">
+                    <div class="col s12 m4">
+                        <div class="logo center-align">
+                            <img src="../../assets/images/logo-govi-hero.png">
+                        </div>            
+                     </div>
+                     <div class="col s12 m1">&nbsp;</div>
+                     <div class="col s12 m7 hero">
+                         <h5>Governo interativo. 10x mais rápido!</h5>
+                        <p class="govi-flow-text">Nós estamos construindo o governo mais interativo do mundo. Com plataformas de comunicação ágeis para todo o Governo e todos os papéis que se relacionam conosco.</p>                 
+                    </div>
+                </div>             
+            </div>
+        </section>            
+        <section class="home-content-values"> 
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h4 class="center-align">Interatividade e agilidade para Todos</h4>
+                        <p class="subheader center-align">sociedade, colaboradores e fornecedores.<span class="text-italic">TODOS</span> ganham com a agilidade.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m7">
+                        <div class="inspirational-values">
+                            <div class="aspirational-msg">
+                                <div class="subsection-header">Negócio &amp; Comunidade</div>
+                                <p class="">Estamos criando o governo mais interativo do mundo. Com plataformas sustentáveis, bem desenhadas em busca de crescimento e agilidade.</p>
+                            </div>                     
+                            <div class="aspirational-msg">
+                                <div class="subsection-header">Experiência do Usuário conta</div>
+                                <p class="">Todas as partes construídas para facilitar a compreensão e usabilidade. Com interatividade e feedbacks dos usuários incorporados ao processo de desenvolvimento.</p>
+                            </div>  
+                            <div class="aspirational-msg">
+                                <div class="subsection-header">Muito além da comunicação</div>
+                                <p class="">O Govi é um <span class="text-italic">ponto de acesso</span> inteligente que reúne novas formas de comunicação entre pessoas para <span class="text-italic"><strong class="hint">pessoas e sistemas no Governo</strong></span> que irá ajudar nas interações e fazer muito mais por você.</p>
+                            </div>                     
+                        </div>                
+                    </div>
+                    <div class="col s12 m5">
+                        <div class="inspirational-image">
+                            VIDEO
+                        </div>
+                    </div>
+                </div>
+                <div class="line-horizontal" style="margin-top: 100px;"></div>
+            </div>
+        </section> 
+        <section class="home-content-news">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m4">
+                        <div class="news-posts">
+                            <div class="posts-image center-align">
+                                <div>
+                                    <img src="../../assets/images/loop_agile.png">
+                                </div>    
+                            </div>
+                            <div class="posts-content">
+                                <h6>Criado para ser ágil</h6>
+                                <p>A pilha tecnológica utilizada no Govi é construída para agilidade e reuso permitindo criar um conjunto de elementos consistentes para a estratégia corporativa.</p>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="col s12 m4">
+                        <div class="news-posts">
+                            <div class="posts-image center-align">
+                                <div>
+                                    <img src="../../assets/images/rocket.png">
+                                </div>    
+                            </div>
+                            <div class="posts-content">
+                                <h6>Presente e Futuro</h6>
+                                <p>Ao usar WebComponents estamos criando não apenas software, mas a cultura de inovação para toda a comunidade. Pronto para produção e para o futuro!</p>
+                            </div>
+                        </div>                           
+                    </div>
+                    <div class="col s12 m4">
+                        <div class="news-posts">
+                            <div class="posts-image center-align">
+                                <div>
+                                    <img src="../../assets/images/globe.png">
+                                </div>    
+                            </div>
+                            <div class="posts-content">
+                                <h6>Amplamente aceita no globo</h6>
+                                <p>A Web se move rapidamente para adoção de implementações mais poderosas e seguras. Com as API do HTML5 temos a evolução das aplicações Web e <strong>nativas</strong>.</p>
+                            </div>
+                        </div>                           
+                    </div>                    
+                </div>
+            </div>
+        </section>
+        <section class="home-content-team">
+            <div class="container">
+                <div class="row">
+                    <!-- title -->
+                    <div class="col s12">
+                        <h4 class="center-align">#Time #ChangeMakers</h4>
+                        <p class="subheader center-align" style="color: white;">o status quo não é uma ordem cósmica</p>
+                    </div>
+                </div>
+                <div class="row team-members">
+                    <div class="col s12 m4">
+                        <img src="../../assets/images/dev_avatar1.png">
+                        <h5>Horacio Ibrahim</h5>
+                        <p>converte polímeros em códigos, com café &amp; pomodoro</p>
+                    </div>
+                    <div class="col s12 m4">
+                        <img src="../../assets/images/dev_avatar2.png">
+                        <h5>Eduardo Nascimento</h5>
+                        <p>trampa forte para fazer o código rodar</p>
+                    </div>
+                    <div class="col s12 m4">
+                        <img src="../../assets/images/dev_avatar3.png">
+                        <h5>Carlos Santos</h5>
+                        <p>escreve códigos legíveis para toda a família</p>
+                    </div>
+                </div>
+                <div class="row team-members">
+                    <div class="col s12 m4">
+                        <img src="../../assets/images/dev_avatar4.png">
+                        <h5>Mario Costa</h5>
+                        <p>lidera o projeto orquestrando todo o time</p>
+                    </div>
+                    <div class="col s12 m4">
+                        <img src="../../assets/images/dev_avatar5.png">
+                        <h5>Renato Pain</h5>
+                        <p>transforma ideias em satisfação do cliente ;)</p>
+                    </div>
+                    <div class="col s12 m4">
+                       &nbsp;
+                    </div>
+                </div>                
+            </div>
+        </section>
+        <section id="menu" class="home-content-register">
+            <div class="container">
+                  <div class="row center">
+                    <h4 id="login" class="black-weight">Conecte-se agora. Podemos fazer isso juntos!</h4>
+                    <p class="subheader">você pode contribuir para um governo transparente, inteligente e ágil.</p>
+                  </div>      
+                  <!-- login -->
+                  <div class="row">
+        <div class="col s12 m6 l6">
+            <div class="center">
+                <p class="flow-text hints-color">Selecione uma conta para participar e receber novidades.</p>
+            </div> 
+            <div class="row center">
+                <div class="col s12">  
+                    <button class="btns btn-large waves-effect waves-light red darken-1" on-tap="providerGoogle"><svg style="width:24px;height:24px;top: 6px; position: relative; right: 5px;" viewBox="0 0 24 24">
+                        <path fill="#ffffff" d="M19,12H17V14H16V12H14V11H16V9H17V11H19M9.07,19.2C6.27,19.2 5,17.64 5,16.18C5,15.73 5.14,14.59 6.5,13.8C7.25,13.33 8.33,13 9.62,12.89C9.43,12.64 9.28,12.34 9.28,11.9C9.28,11.75 9.3,11.59 9.34,11.44H8.95C7,11.44 5.8,9.89 5.8,8.39C5.8,6.66 7.09,4.8 9.91,4.8H14.13L13.79,5.14L13.08,5.85L13,5.91H12.3C12.71,6.33 13.2,7 13.2,8.07C13.2,9.47 12.46,10.16 11.64,10.8C11.5,10.92 11.22,11.18 11.22,11.5C11.22,11.82 11.46,12 11.61,12.14C11.74,12.25 11.9,12.36 12.08,12.5C12.89,13.05 14,13.83 14,15.36C14,17.13 12.71,19.2 9.07,19.2M20,2H4A2,2 0 0,0 2,4V20A2,2 0 0,0 4,22H20A2,2 0 0,0 22,20V4C22,2.89 21.1,2 20,2M10.57,13.81C10.46,13.8 10.38,13.8 10.25,13.8H10.23C9.97,13.8 9.08,13.85 8.41,14.07C7.77,14.31 7,14.79 7,15.77C7,16.85 8.04,18 9.96,18C11.5,18 12.4,17 12.4,16C12.4,15.25 11.94,14.79 10.57,13.81M11.2,8.87C11.2,7.85 10.57,5.85 9.12,5.85C8.5,5.85 7.8,6.29 7.8,7.5C7.8,8.7 8.42,10.45 9.77,10.45C9.83,10.45 11.2,10.44 11.2,8.87Z"></path>
+                        </svg>Google</button>                    
+                </div>
+            </div> 
+            <div class="row center">
+                <button class="btns btn-large waves-effect waves-light blue darken-4" on-tap="providerFacebook"><svg style="width:24px;height:24px;top: 6px; position: relative; right: 5px;" viewBox="0 0 24 24">
+                    <path fill="#ffffff" d="M19,4V7H17A1,1 0 0,0 16,8V10H19V13H16V20H13V13H11V10H13V7.5C13,5.56 14.57,4 16.5,4M20,2H4A2,2 0 0,0 2,4V20A2,2 0 0,0 4,22H20A2,2 0 0,0 22,20V4C22,2.89 21.1,2 20,2Z"></path>
+                    </svg>Facebook</button>             
+            </div>
+            <div class="row center">
+                <button class="btns btn-large waves-effect waves-light light-blue lighten-2 button-twitter" on-tap="providerTwitter">
+                    <img src="/assets/images/Twitter_logo_white_32.png" width="24px">Twitter</button>
+            </div>            
+        </div>
+        <div class="col s12 hide-on-med-and-up or-divider">
+            <span>OR</span>
+        </div>
+        <div class="col s12 m6 l6 relative login-right">
+        <div class="hide-on-small-only vertical-or">OR</div>
+        <div class="create-list-login-panel center">
+            <div>
+                <input class="new-list-name-hidden" type="hidden" name="new-list-name" value="">
+                <div class="center">
+                    <p class="flow-text hints-color">Crie uma conta usando seu e-mail.</p>
+                </div>
+                <div class="row">
+                    <div class="col s12 input-field">
+                        <input id="new-your-name" name="new-your-name" type="text">
+                        <label for="new-your-name">Nome</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 input-field">
+                        <input id="new-your-email" name="new-your-email" type="email">
+                        <label for="new-your-email">E-mail</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 input-field">
+                        <input id="new-your-password" name="new-your-password" type="password">
+                        <label for="new-your-password">Senha</label>
+                    </div>
+                </div>
+                <div class="row center">
+                    <button class="btn-large waves-effect waves-light blue darken-4">Criar Conta</button>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>                 
+            </div>
+        </section>        
+        <footer>
+            <section class="details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 mtop">
+                            <img src="../../assets/images/logo-govi.png">
+                            <h6>Governo Interativo</h6>
+                        </div>                       
+                    </div>
+                    <div class="row links-footer">
+                        <div class="col s4">
+                            <ul>
+                                <li><a href="/#/blog">Novidades</a></li>
+                                <li><a href="https://chat.serpro.gov.br/channel/govi">Contate-nos no chat</a></li>
+                                <li><a href="https://chat.serpro.gov.br/channel/govi">O time</a></li>
+                            </ul>
+                        </div>
+                        <div class="col s4">
+                            <ul>
+                                <li><a href="/#/blog/h/goviCasts">#goviCasts</a></li>
+                                <li><a href="/#/blog/h/goviLabs">#goviLabs</a></li>
+                                <li><a href="/#/blog/h/goviLives">#goviLives</a></li>
+                            </ul>                        
+                        </div>
+                        <div class="col s4">
+                            <ul>
+                                <li><a href="/#/blog/h/goviElements">#goviElements (Blog)</a></li>
+                                <li><a href="https://git.serpro/govi/goviElements">goviElements.git</a></li>
+                                <li><a href="https://git.serpro/govi">Contribua</a></li>
+                            </ul>                         
+                        </div>                        
+                    </div> 
+                </div>
+            </section>
+            <section class="copyleft">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12" style="margin-top: 21px; color: rgba(0,0,0,0.54);">&copy; copyright - Serpro - Serviço Federal de Processamento de Dados</div>
+                    </div>
+                </div>
+            </section>            
+        </footer>
+    </div>
+</tpl-drawer-default>
+    
+</template>
+<script>
+Polymer({
+    is: 'govi-home',
+    properties: {
+        tokens: {
+            type: Object,
+            value: {
+                google: undefined,
+                facebook: undefined,
+                twitter: undefined,
+                email: undefined,
+                github: undefined
+            }
+        }
+    },
+    ready: function() {
+        var self = this;
+        firebase.auth().getRedirectResult().then(function(result) {
+          if (result.credential) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            self.tokens.google = token;
+            // ...
+            console.log("token: " + token);
+          }
+          // The signed-in user info.
+          var user = result.user;
+          // console.log(user);
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          console.log(error);
+          // ...
+        });        
+    },
+    providerGoogle: function() {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        var guser = firebase.auth().signInWithRedirect(provider);        
+    },
+    providerFacebook: function() {
+        var provider = new firebase.auth.FacebookAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // ...
+          });      
+    },
+    providerTwitter: function() {
+        var provider = new firebase.auth.TwitterAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+          // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+          // You can use these server side with your app's credentials to access the Twitter API.
+          var token = result.credential.accessToken;
+          var secret = result.credential.secret;
+          // The signed-in user info.
+          var user = result.user;
+          // ...
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // ...
+        });        
+    }
+});
+</script>
+</dom-module>
