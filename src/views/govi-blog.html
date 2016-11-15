@@ -115,7 +115,8 @@
                     </div>                
                     <div class="row">
                         <div class="col s12 post-body">
-                            <inject-html html="{{post.body}}"></inject-html>
+                            <inject-html html="{{post.body}}">
+                            </inject-html>
                         </div>                
                     </div>                
                 </div>
@@ -176,6 +177,7 @@ Polymer({
     },
     _getPosts: function() {
         var self = this;
+        
         this.bRef = firebase.database().ref('blog/');
         this.bRef.on('child_added', function(res){
             self.posts.unshift(res.val());
@@ -192,9 +194,8 @@ Polymer({
                     var model = res.val();
                     var items = Object.keys(model);
                     var item = model[items[0]];
-                    console.log(item);
+                    // console.log(item);
                     self.post = item;
-                    
                 }, 
                 function(err){
                     console.log(err)

@@ -190,7 +190,7 @@ Govi.prototype = {
             return introText + '...';            
         }
         //text.replace()
-    },
+    }, 
     /* Date handlers */
     getDateFromTimestamp: function(timestamFromNow) {
         var monthsArr = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]

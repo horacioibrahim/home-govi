@@ -10,7 +10,10 @@
 <style include="shared-styles">
   app-header {
     color: var(--govi-text-secondary-color);
-    background-color: var(--govi-primary-color);
+    background-color: #FFFFFF; /* var(--govi-primary-color) */
+    --app-header-shadow: {
+        box-shadow: inset 0px 5px 2px -3px rgba(0, 0, 0, 0.2);
+    };
   }
   app-header paper-icon-button {
     --paper-icon-button-ink-color: white;
@@ -57,7 +60,7 @@
 
       <!-- Main content -->
       <app-header-layout has-scrolling-region>
-        <app-header condenses reveals effects="waterfall" class="boxShadow">
+        <app-header condenses fixed effects="waterfall" class="boxShadow">
           <app-toolbar>
             <paper-icon-button icon="menu" class="sandwich" drawer-toggle></paper-icon-button>
             <div main-title on-tap="goto"><a name="home" href="#/home"><template is="dom-if" if="{{!has_avatar}}"><img src="../../assets/images/logo-govi.png" height="48px"></template><template is="dom-if" if="{{has_avatar}}"><img src="../../assets/images/logo-govi-plus.png" height="48px"><img src="{{avatar}}" class="circle limit-height"></template></a></div>

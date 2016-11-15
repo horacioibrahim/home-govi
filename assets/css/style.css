@@ -97,8 +97,23 @@ h4.black-weight {
 .text-italic {
     font-style: italic;
 }
-/* flow-text for editable */
-.editor-box p, .editor-box blockquote {
+/**************************************
+********** BLOG SECTION ***************
+**************************************/
+.post-body {
+    font-family: Georgia,Cambria,"Times New Roman",Times, serif;
+    color: rgba(0,0,0,0.80);
+}
+
+.post-body h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/**************************************
+********** flow-text for editable *****
+***************************************/
+.editor-box p, .editor-box blockquote, .post-body p {
     margin-top: 10px;
     margin-bottom: 14px;
     font-family: Georgia,Cambria,"Times New Roman",Times, serif;
@@ -122,47 +137,47 @@ h4.black-weight {
 }
    
 @media only screen and (min-width: 360px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.2rem;
     }
 }
 @media only screen and (min-width: 390px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.224rem;
     }
 } 
 @media only screen and (min-width: 420px) {
-    .editor-box p , .editor-box blockquote{
+    .editor-box p , .editor-box blockquote, .post-body p{
         font-size: 1.248rem;
     }
 } 
 @media only screen and (min-width: 450px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.272rem;
     }
 }
 @media only screen and (min-width: 480px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.296rem;
     }
 }
 @media only screen and (min-width: 510px) {
-    .editor-box p {
+    .editor-box p, .post-body p {
         font-size: 1.32rem;
     }
 }
 @media only screen and (min-width: 540px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.344rem;
     }
 }
 @media only screen and (min-width: 570px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.368rem;
     }
 }
 @media only screen and (min-width: 600px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.392rem;
     }
 }
@@ -173,47 +188,47 @@ h4.black-weight {
     }
 }
 @media only screen and (min-width: 660px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.44rem;
     }
 }
 @media only screen and (min-width: 690px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.464rem;
     }
 }
 @media only screen and (min-width: 720px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.488rem;
     }
 }
 @media only screen and (min-width: 750px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.512rem;
     }
 }
 @media only screen and (min-width: 780px) {
-    .editor-box p {
+    .editor-box p, .post-body p {
         font-size: 1.536rem;
     }
 }
 @media only screen and (min-width: 810px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.56rem;
     }
 }
 @media only screen and (min-width: 840px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.584rem;
     }
 }
 @media only screen and (min-width: 870px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.608rem;
     } 
 }
 @media only screen and (min-width: 900px) {
-    .editor-box p, .editor-box blockquote {
+    .editor-box p, .editor-box blockquote, .post-body p {
         font-size: 1.632rem;
     }    
 }

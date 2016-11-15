@@ -6,7 +6,7 @@
     "src/views/govi-blog.html",
     "src/views/govi-casts.html",
     "src/views/govi-team.html",
-    "src/views/govi-404.html".
+    "src/views/govi-404.html",
     "src/views/govi-my-posts.html",
     "src/views/govi-edit.html"   
   ],
